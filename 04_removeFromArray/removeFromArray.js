@@ -1,22 +1,15 @@
-const removeFromArray = function (arrayOfElements, ...elements) {
-  let number;
-  for (let j = 0; j < arguments.length - 1; j++) {
-    number = elements[j];
+const removeFromArray = function (arrayOfElemnt, ...element) {
+  let arr = arrayOfElemnt.filter((item) => {
+    return !element.includes(item);
+  });
+  arr = arr.filter((item) => {
+    return item % element !== 0;
+  });
 
-    console.log(typeof number);
-    for (let i = 0; i < arrayOfElements.length; i++) {
-      if (typeof number !== "number") continue;
-      if (arrayOfElements[i] % number === 0) {
-        arrayOfElements.splice(i, 1);
-      }
-      if (arrayOfElements[i] === number) {
-        arrayOfElements.splice(i, 1);
-      }
-    }
-  }
-  return arrayOfElements;
+  return arr;
 };
 
-console.log(removeFromArray([1, 2, 3], "1", 3));
+console.log(removeFromArray([1, 2, 3, 2, "1"], 1, 2, "1"));
+
 // Do not edit below this line
 module.exports = removeFromArray;
